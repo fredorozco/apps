@@ -7,768 +7,225 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Variables de Diseño Premium */
-        :root {
-            --darkbg: #0B0C0E;
-            --darkcard: #121416;
-            --gold-primary: #d4af37;
-            --gold-light: #f5eecf;
-            --gold-dark: #955f1b;
-            --gold-hover: #b88124;
-            --text-gray: #9ca3af;
-            --text-light: #f3f4f6;
-            --white-5: rgba(255, 255, 255, 0.03);
-            --white-10: rgba(255, 255, 255, 0.08);
-            --white-20: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Reset y Estilos Globales */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--darkbg);
-            color: var(--text-light);
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            border-b: 1px solid var(--white-10);
-            background-color: rgba(18, 20, 22, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 16px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            border-bottom: 1px solid var(--white-10);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: justify;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background-color: rgba(212, 175, 55, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
-        }
-
-        .brand-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            color: #fff;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        .brand-text p {
-            font-size: 10px;
-            color: var(--gold-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .btn-settings-toggle {
-            background-color: var(--white-5);
-            border: 1px solid var(--white-10);
-            color: var(--text-light);
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s;
-        }
-
-        .btn-settings-toggle:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-        }
-
-        /* Layout de la Aplicación */
-        main {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 24px 16px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            flex-grow: 1;
-        }
-
-        @media (min-width: 1024px) {
-            main {
-                grid-template-columns: 5fr 7fr;
-                align-items: start;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cursive: ['Alex Brush', 'cursive'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fbf8eb',
+                            100: '#f5eecf',
+                            200: '#ebd99f',
+                            300: '#dfbe64',
+                            400: '#d4a337',
+                            500: '#b88124',
+                            600: '#955f1b',
+                            700: '#744317',
+                            800: '#5c3315',
+                            primary: '#d4af37',
+                        },
+                        darkbg: '#0B0C0E',
+                        darkcard: '#121416',
+                    }
+                }
             }
         }
-
-        /* Columna de Controles */
-        .controls-column {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+    </script>
+    <style>
+        .premium-glow {
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
         }
-
-        .card {
-            background-color: var(--darkcard);
-            border: 1px solid var(--white-10);
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .card-title h2 {
-            font-family: 'Playfair Display', serif;
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: 500;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
         }
-
-        .card-title p {
-            font-size: 12px;
-            color: var(--text-gray);
-            margin-top: 4px;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 3px;
         }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: var(--white-10);
-            margin: 20px 0;
-        }
-
-        /* Inputs y Selectores */
-        .control-group {
-            margin-bottom: 20px;
-        }
-
-        .control-label {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
-
-        /* Grid de Temas */
-        .grid-topics {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .topic-btn {
-            background-color: var(--white-5);
-            border: 1px solid var(--white-10);
-            color: var(--text-gray);
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .topic-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        .topic-btn.active {
-            background-color: rgba(212, 175, 55, 0.1);
-            border-color: var(--gold-primary);
-            color: #fff;
-        }
-
-        .topic-btn.active svg {
-            color: var(--gold-primary);
-        }
-
-        /* Fuentes */
-        .grid-fonts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-
-        .font-btn {
-            background-color: var(--white-5);
-            border: 1px solid var(--white-10);
-            color: var(--text-gray);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .font-btn.active {
-            background-color: rgba(212, 175, 55, 0.05);
-            border-color: var(--gold-primary);
-            color: #fff;
-        }
-
-        /* Colores de texto */
-        .color-selector {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .color-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .color-btn.active {
-            border-color: var(--gold-primary);
-            transform: scale(1.1);
-        }
-
-        /* Textarea */
-        textarea {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--white-10);
-            border-radius: 14px;
-            padding: 12px;
-            color: var(--text-light);
-            font-size: 12px;
-            font-family: inherit;
-            resize: none;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        textarea:focus {
-            border-color: var(--gold-primary);
-        }
-
-        /* Botón Generar */
-        .btn-primary {
-            width: 100%;
-            background: linear-gradient(135deg, var(--gold-hover), var(--gold-primary));
-            color: var(--darkbg);
-            border: none;
-            padding: 16px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-            transition: all 0.2s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        /* Panel de Ajustes */
-        .settings-panel {
-            background-color: var(--darkcard);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            box-shadow: 0 0 30px rgba(212,175,55,0.05);
-        }
-
-        .settings-panel.hidden {
-            display: none;
-        }
-
-        .settings-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .settings-header h3 {
-            font-size: 14px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .settings-header button {
-            background: none;
-            border: none;
-            color: var(--text-gray);
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .settings-panel input {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--white-10);
-            padding: 12px;
-            border-radius: 10px;
-            color: #fff;
-            font-size: 12px;
-            outline: none;
-        }
-
-        .settings-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-save {
-            flex-grow: 1;
-            background-color: var(--gold-primary);
-            color: var(--darkbg);
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .btn-clear {
-            background-color: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        /* Columna de Previsualización (Story 9:16) */
-        .preview-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .story-container {
-            width: 100%;
-            max-width: 360px;
+        /* Mobile aspect ratio container */
+        .story-preview-container {
             aspect-ratio: 9/16;
-            background-color: #1a1a1a;
-            border-radius: 32px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--white-10);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        canvas.hidden {
-            display: none;
-        }
-
-        /* Mensaje Inicial y Loader */
-        .placeholder-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
-            text-align: center;
-            background-color: var(--darkcard);
-            gap: 16px;
-            z-index: 10;
-        }
-
-        .placeholder-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background-color: rgba(212, 175, 55, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
-        }
-
-        .placeholder-icon svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
-
-        .placeholder-overlay h3 {
-            font-family: 'Playfair Display', serif;
-            color: #fff;
-            font-size: 18px;
-        }
-
-        .placeholder-overlay p {
-            font-size: 12px;
-            color: var(--text-gray);
-            line-height: 1.5;
-        }
-
-        /* Loader de Generación */
-        .loader-overlay {
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            z-index: 20;
-            padding: 32px;
-            text-align: center;
-        }
-
-        .loader-overlay.hidden {
-            display: none;
-        }
-
-        .spinner {
-            position: relative;
-            width: 64px;
-            height: 64px;
-        }
-
-        .spinner-ring {
-            position: absolute;
-            inset: 0;
-            border: 4px solid rgba(212, 175, 55, 0.15);
-            border-top-color: var(--gold-primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .spinner-icon {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        .spinner-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
-
-        .loader-overlay h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 15px;
-            color: #fff;
-        }
-
-        .loader-overlay p {
-            font-size: 10px;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-
-        /* Botón de Descarga */
-        .btn-download {
-            width: 100%;
-            max-width: 360px;
-            background-color: var(--white-5);
-            border: 1px solid var(--white-10);
-            color: var(--text-gray);
-            padding: 14px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: not-allowed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .btn-download.ready {
-            background-color: var(--gold-primary);
-            color: var(--darkbg);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
-        }
-
-        .btn-download.ready:hover {
-            background-color: var(--gold-hover);
-        }
-
-        /* Info tutorial */
-        .info-box {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--white-5);
-            border-radius: 16px;
-            padding: 16px;
-            display: flex;
-            gap: 12px;
-            font-size: 11px;
-            line-height: 1.5;
-            color: var(--text-gray);
-        }
-
-        .info-box svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--gold-primary);
-            flex-shrink: 0;
-        }
-
-        .info-box strong {
-            color: #fff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 24px;
-            font-size: 10px;
-            color: var(--text-gray);
-            border-top: 1px solid var(--white-10);
-            background-color: rgba(18, 20, 22, 0.3);
-            margin-top: 32px;
+            max-height: 65vh;
         }
     </style>
 </head>
-<body>
+<body class="bg-darkbg text-gray-300 font-sans antialiased min-h-screen selection:bg-gold-primary selection:text-darkbg flex flex-col justify-between">
 
-    <!-- Header principal -->
-    <header>
-        <div class="header-container">
-            <div class="brand">
-                <div class="brand-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
+    <!-- Top Header -->
+    <header class="border-b border-white/5 bg-darkcard/40 backdrop-blur-md py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gold-primary/15 flex items-center justify-center text-gold-primary">
+                    <i class="fa-solid fa-sparkles text-sm"></i>
                 </div>
-                <div class="brand-text">
-                    <h1>InstaVerse AI</h1>
-                    <p>Diseño Diarios con Gemini</p>
+                <div>
+                    <h1 class="text-white font-serif text-lg font-semibold leading-tight">InstaVerse AI</h1>
+                    <p class="text-[10px] text-gold-primary tracking-widest uppercase font-medium">Diseño Diarios con Gemini</p>
                 </div>
             </div>
-            <button onclick="toggleSettings()" class="btn-settings-toggle">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                Ajustes API
+            <button onclick="toggleSettings()" class="text-gray-400 hover:text-gold-primary transition-colors text-sm flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+                <i class="fa-solid fa-gear"></i> Ajustes API
             </button>
         </div>
     </header>
 
-    <!-- Workspace -->
-    <main>
+    <!-- Main Workspace -->
+    <main class="max-w-6xl mx-auto px-4 py-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
         
-        <!-- Controles de la Izquierda -->
-        <section class="controls-column">
+        <!-- Controls Sidebar (Left Column - 5 cols) -->
+        <section class="lg:col-span-5 space-y-6 flex flex-col justify-start">
             
-            <!-- Panel de Clave API (Colapsable) -->
-            <div id="settings-panel" class="settings-panel hidden">
-                <div class="settings-header">
-                    <h3>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
-                        Clave API de Gemini
+            <!-- API Settings Panel (Collapsible) -->
+            <div id="settings-panel" class="bg-darkcard border border-amber-500/20 rounded-2xl p-5 space-y-4 premium-glow hidden">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-serif text-sm font-medium flex items-center gap-2">
+                        <i class="fa-solid fa-key text-gold-primary"></i> Configurar Clave API de Gemini
                     </h3>
-                    <button onclick="toggleSettings()">&times;</button>
+                    <button onclick="toggleSettings()" class="text-gray-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <p style="font-size: 11px; color: var(--text-gray);">Ingresa tu API Key gratuita de Google AI Studio. Se almacena localmente y de forma segura en tu propio móvil.</p>
-                <input type="password" id="api-key-input" placeholder="AIzaSy...">
-                <div class="settings-actions">
-                    <button onclick="saveApiKey()" class="btn-save">Guardar Clave</button>
-                    <button onclick="clearApiKey()" class="btn-clear">Limpiar</button>
+                <p class="text-[11px] text-gray-400">Inserta tu API Key gratuita de Google AI Studio. Se almacena localmente en tu iPhone de forma segura.</p>
+                <div class="space-y-2">
+                    <input type="password" id="api-key-input" placeholder="AIzaSy..." class="w-full text-xs bg-black/40 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-gold-primary transition-all">
+                    <div class="flex gap-2">
+                        <button onclick="saveApiKey()" class="flex-1 bg-gold-primary hover:bg-gold-400 text-darkbg font-bold py-2 rounded-lg text-xs transition-colors">Guardar Clave</button>
+                        <button onclick="clearApiKey()" class="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium px-3 rounded-lg text-xs transition-colors">Limpiar</button>
+                    </div>
                 </div>
+                <p class="text-[10px] text-gray-500">¿No tienes clave? El generador utilizará un sistema estético offline de respaldo de forma automática.</p>
             </div>
 
-            <!-- Ajustes Principales -->
-            <div class="card">
-                <div class="card-title">
-                    <h2>Configura tu Historia</h2>
-                    <p>Crea el versículo diario y fondo abstracto en un clic.</p>
+            <!-- Main controls -->
+            <div class="bg-darkcard border border-white/5 rounded-2xl p-6 premium-glow space-y-5">
+                <div>
+                    <h2 class="text-white font-serif text-xl font-medium">Configura tu Historia</h2>
+                    <p class="text-xs text-gray-400 mt-1">Elige la temática del versículo y el estilo del fondo cauto.</p>
                 </div>
 
-                <hr>
+                <hr class="border-white/5">
 
-                <!-- Temática -->
-                <div class="control-group">
-                    <label class="control-label">Temática Bíblica</label>
-                    <div class="grid-topics">
-                        <button onclick="setTopic('esperanza')" class="topic-btn active">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
-                            Esperanza
+                <!-- Temas del Versículo -->
+                <div class="space-y-2">
+                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Temática Bíblica</label>
+                    <div class="grid grid-cols-2 gap-2" id="topic-selector">
+                        <button onclick="setTopic('esperanza')" class="topic-btn active px-3 py-2.5 rounded-xl border border-gold-primary bg-gold-primary/10 text-white font-medium text-xs text-left transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-anchor text-gold-primary"></i> Esperanza
                         </button>
-                        <button onclick="setTopic('paz')" class="topic-btn">
-                            <svg viewBox="0 0 24 24"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-15h-2v6h2V7zm0 8h-2v2h2v-2z"/></svg>
-                            Paz Interior
+                        <button onclick="setTopic('paz')" class="topic-btn px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-dove"></i> Paz Interior
                         </button>
-                        <button onclick="setTopic('fortaleza')" class="topic-btn">
-                            <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2v2.2C17.3 6.8 20 9.1 20 12c0 4.4-3.6 8-8 8s-8-3.6-8-8c0-2.9 2.7-5.2 6-5.8V4c0-1.1.9-2 2-2z"/></svg>
-                            Fortaleza
+                        <button onclick="setTopic('fortaleza')" class="topic-btn px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-dumbbell"></i> Fortaleza
                         </button>
-                        <button onclick="setTopic('gratitud')" class="topic-btn">
-                            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            Gratitud
+                        <button onclick="setTopic('gratitud')" class="topic-btn px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-heart"></i> Gratitud
                         </button>
                     </div>
                 </div>
 
-                <!-- Tipografías -->
-                <div class="control-group">
-                    <label class="control-label">Estilo de Fuente</label>
-                    <div class="grid-fonts">
-                        <button onclick="setFontStyle('serif')" class="font-btn active" style="font-family: 'Playfair Display', serif;">Serif Pro</button>
-                        <button onclick="setFontStyle('sans')" class="font-btn" style="font-family: 'Plus Jakarta Sans', sans-serif;">Minimal</button>
-                        <button onclick="setFontStyle('cursive')" class="font-btn" style="font-family: 'Alex Brush', cursive; font-size: 15px;">Elegante</button>
+                <!-- Estilos de Tipografía -->
+                <div class="space-y-2">
+                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Estilo de Fuente</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setFontStyle('serif')" class="font-btn active py-2 rounded-lg border border-gold-primary bg-gold-primary/5 text-white font-serif text-xs transition-all">Serif Pro</button>
+                        <button onclick="setFontStyle('sans')" class="font-btn py-2 rounded-lg border border-white/5 bg-white/[0.02] text-gray-400 font-sans text-xs transition-all">Minimal</button>
+                        <button onclick="setFontStyle('cursive')" class="font-btn py-2 rounded-lg border border-white/5 bg-white/[0.02] text-gray-400 font-cursive text-base transition-all">Elegante</button>
                     </div>
                 </div>
 
-                <!-- Color de Texto -->
-                <div class="control-group">
-                    <label class="control-label">Color de Texto</label>
-                    <div class="color-selector">
-                        <button onclick="setTextColor('#ffffff')" class="color-btn active" style="background-color: #ffffff;"></button>
-                        <button onclick="setTextColor('#F5EECD')" class="color-btn" style="background-color: #F5EECD;"></button>
-                        <button onclick="setTextColor('#1A1C1E')" class="color-btn" style="background-color: #1A1C1E;"></button>
+                <!-- Color de Fuente -->
+                <div class="space-y-2">
+                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Color del Texto</label>
+                    <div class="flex items-center gap-3">
+                        <button onclick="setTextColor('#ffffff')" class="color-btn border-2 border-gold-primary w-8 h-8 rounded-full bg-white transition-all focus:outline-none" title="Blanco Puro"></button>
+                        <button onclick="setTextColor('#F5EECD')" class="color-btn border border-white/10 w-8 h-8 rounded-full bg-[#F5EECD] transition-all focus:outline-none" title="Crema Cálido"></button>
+                        <button onclick="setTextColor('#1A1C1E')" class="color-btn border border-white/10 w-8 h-8 rounded-full bg-[#1A1C1E] transition-all focus:outline-none" title="Gris Profundo"></button>
                     </div>
                 </div>
 
                 <!-- Prompt del Fondo IA -->
-                <div class="control-group">
-                    <label class="control-label">Fondo IA (Diseño Abstracto)</label>
-                    <textarea id="prompt-input" rows="3">A minimalist fine art textured background, abstract organic shapes, professional muted warm gray and beige neutral palette, soft studio shadows, completely clean of text, elegant spacious canvas</textarea>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase">Fondo IA (Diseño Abstracto)</label>
+                        <span class="text-[10px] text-amber-500 font-medium"><i class="fa-solid fa-circle-exclamation"></i> Cauto & Elegante</span>
+                    </div>
+                    <textarea id="prompt-input" rows="3" class="w-full text-xs bg-black/30 border border-white/10 rounded-xl p-3 text-gray-300 focus:outline-none focus:border-gold-primary transition-all custom-scrollbar">A minimalist fine art textured background, abstract organic shapes, professional muted warm gray and beige neutral palette, soft studio shadows, completely clean of text, elegant spacious canvas</textarea>
                 </div>
 
-                <!-- Botón de Ejecutar -->
-                <button onclick="generateEverything()" id="btn-generate" class="btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
+                <!-- Trigger Button -->
+                <button onclick="generateEverything()" id="btn-generate" class="w-full bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-600 hover:to-gold-500 text-darkbg font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg hover:shadow-gold-500/10 flex items-center justify-center gap-2 group text-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles group-hover:rotate-12 transition-all"></i>
                     Generar Diseño Completo
                 </button>
             </div>
 
-            <!-- Info Tutorial -->
-            <div class="info-box">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                <div>
-                    <strong>¿Cómo instalarlo en tu iPhone?</strong><br>
-                    Abre este archivo en Safari desde tu iPhone, presiona el botón "Compartir" de abajo en el centro de la pantalla y pulsa en <b>"Añadir a pantalla de inicio"</b>. ¡Se convertirá en una app nativa en tu móvil!
+            <!-- Ayuda rápida -->
+            <div class="p-4 bg-white/[0.02] border border-white/5 rounded-xl flex gap-3 items-start text-xs">
+                <i class="fa-solid fa-circle-info text-gold-primary mt-0.5"></i>
+                <div class="text-gray-400 leading-relaxed">
+                    <strong class="text-white block mb-0.5">Cómo instalarlo en tu iPhone:</strong>
+                    Abre esta web en tu iPhone con Safari, dale a "Compartir" y selecciona "Añadir a pantalla de inicio". ¡Se convertirá en una App instantánea!
                 </div>
             </div>
         </section>
 
-        <!-- Columna de la Derecha (Canvas) -->
-        <section class="preview-column">
+        <!-- Preview Column (Right Column - 7 cols) -->
+        <section class="lg:col-span-7 flex flex-col items-center justify-center space-y-4">
             
-            <!-- Lienzo de la Historia -->
-            <div class="story-container">
-                <canvas id="story-canvas" width="1080" height="1920" class="hidden"></canvas>
+            <!-- Realtime Interactive Canvas -->
+            <div class="w-full max-w-[360px] story-preview-container bg-neutral-900 rounded-3xl overflow-hidden shadow-2xl relative border border-white/10 flex items-center justify-center group">
+                <canvas id="story-canvas" width="1080" height="1920" class="w-full h-full object-cover hidden"></canvas>
                 
-                <!-- Overlay Informativo Inicial -->
-                <div id="canvas-placeholder" class="placeholder-overlay">
-                    <div class="placeholder-icon">
-                        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <!-- Skeleton / Placeholder / Loader overlay -->
+                <div id="canvas-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-darkcard space-y-4 z-10 transition-opacity duration-300">
+                    <div class="w-16 h-16 rounded-full bg-gold-primary/10 flex items-center justify-center text-gold-primary text-2xl animate-pulse">
+                        <i class="fa-solid fa-image"></i>
                     </div>
-                    <h3>Tu Historia de Instagram</h3>
-                    <p>Presiona el botón de generar. Si no tienes una clave API configurada, utilizaremos una elegante plantilla offline de alta calidad para que funcione siempre.</p>
+                    <div>
+                        <h3 class="text-white font-serif text-lg font-medium">Tu Historia de Instagram</h3>
+                        <p class="text-xs text-gray-500 max-w-xs mt-1">Presiona el botón de generar para crear un diseño personalizado único con Inteligencia Artificial.</p>
+                    </div>
                 </div>
 
-                <!-- Cargando... -->
-                <div id="canvas-loader" class="loader-overlay hidden">
-                    <div class="spinner">
-                        <div class="spinner-ring"></div>
-                        <div class="spinner-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
+                <!-- Custom Elegant Loader -->
+                <div id="canvas-loader" class="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-8 text-center space-y-5 z-20 hidden">
+                    <div class="relative w-20 h-20">
+                        <div class="absolute inset-0 rounded-full border-4 border-gold-primary/10"></div>
+                        <div class="absolute inset-0 rounded-full border-4 border-t-gold-primary animate-spin"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-gold-primary">
+                            <i id="loader-icon" class="fa-solid fa-brain text-xl animate-pulse"></i>
                         </div>
                     </div>
-                    <h4 id="loader-status">Invocando a Gemini...</h4>
-                    <p id="loader-substatus">Obteniendo un versículo hermoso</p>
+                    <div>
+                        <h4 class="text-white font-serif text-sm font-semibold tracking-wide" id="loader-status">Invocando a Gemini...</h4>
+                        <p class="text-[10px] text-gray-400 mt-1 tracking-wider" id="loader-substatus">Obteniendo versículo inspirado</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Botón para Descargar -->
-            <button onclick="downloadStory()" id="btn-download" disabled class="btn-download">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                Descargar Imagen (.JPG)
-            </button>
-            <p style="font-size: 10px; color: var(--text-gray); text-align: center;">Imagen en alta definición (1080x1920 píxeles) adaptada perfectamente para tu pantalla.</p>
+            <!-- Download Button -->
+            <div class="flex items-center gap-3 w-full max-w-[360px]">
+                <button onclick="downloadStory()" id="btn-download" disabled class="flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-white/5 border border-white/10 text-gray-400 cursor-not-allowed hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Descargar Imagen (.JPG)
+                </button>
+            </div>
+            <p class="text-[11px] text-gray-500 text-center max-w-xs">La imagen se descarga en formato vertical de alta definición (1080x1920 px) optimizada para Instagram Stories.</p>
         </section>
 
     </main>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2026 InstaVerse AI. Creador Offline y Online de diseño Bíblico.</p>
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-darkcard/20 py-4 text-center text-[10px] text-gray-500">
+        <p>&copy; 2026 InstaVerse AI. Potenciado por Google Gemini e Imagen 4.0.</p>
     </footer>
 
     <script>
@@ -778,18 +235,20 @@
         let generatedVerse = { verse: "", citation: "" };
         let backgroundImage = null;
         
-        // Elementos de la interfaz
+        // UI Nodes
         const canvas = document.getElementById('story-canvas');
         const ctx = canvas.getContext('2d');
         const placeholder = document.getElementById('canvas-placeholder');
         const loader = document.getElementById('canvas-loader');
         const loaderStatus = document.getElementById('loader-status');
         const loaderSubstatus = document.getElementById('loader-substatus');
+        const loaderIcon = document.getElementById('loader-icon');
         const btnGenerate = document.getElementById('btn-generate');
         const btnDownload = document.getElementById('btn-download');
         const apiKeyInput = document.getElementById('api-key-input');
         const settingsPanel = document.getElementById('settings-panel');
 
+        // Load Key on Startup
         window.onload = function() {
             const savedKey = localStorage.getItem('instaverse_api_key');
             if (savedKey) {
@@ -805,7 +264,7 @@
             const key = apiKeyInput.value.trim();
             if (key) {
                 localStorage.setItem('instaverse_api_key', key);
-                alert("¡Clave de API guardada con éxito!");
+                alert("¡Clave de API guardada exitosamente!");
                 settingsPanel.classList.add('hidden');
             } else {
                 alert("Por favor ingresa una clave válida.");
@@ -815,35 +274,49 @@
         function clearApiKey() {
             localStorage.removeItem('instaverse_api_key');
             apiKeyInput.value = "";
-            alert("Clave de API removida de la memoria.");
+            alert("Clave de API removida.");
         }
 
+        // Set topic button active styling
         function setTopic(topic) {
             currentTopic = topic;
             document.querySelectorAll('.topic-btn').forEach(btn => {
-                btn.classList.remove('active');
+                btn.classList.remove('active', 'border-gold-primary', 'bg-gold-primary/10', 'text-white');
+                btn.classList.add('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
+                const icon = btn.querySelector('i');
+                if (icon) icon.classList.remove('text-gold-primary');
             });
-            event.currentTarget.classList.add('active');
+            const activeBtn = event.currentTarget;
+            activeBtn.classList.add('active', 'border-gold-primary', 'bg-gold-primary/10', 'text-white');
+            activeBtn.classList.remove('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
+            const icon = activeBtn.querySelector('i');
+            if (icon) icon.classList.add('text-gold-primary');
         }
 
+        // Set font button active styling
         function setFontStyle(style) {
             currentFontStyle = style;
             document.querySelectorAll('.font-btn').forEach(btn => {
-                btn.classList.remove('active');
+                btn.classList.remove('active', 'border-gold-primary', 'bg-gold-primary/5', 'text-white');
+                btn.classList.add('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
             });
-            event.currentTarget.classList.add('active');
+            event.currentTarget.classList.add('active', 'border-gold-primary', 'bg-gold-primary/5', 'text-white');
+            event.currentTarget.classList.remove('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
             
             if (backgroundImage) {
                 renderStoryCanvas();
             }
         }
 
+        // Set color active styling
         function setTextColor(color) {
             currentTextColor = color;
             document.querySelectorAll('.color-btn').forEach(btn => {
-                btn.classList.remove('active');
+                btn.classList.remove('border-gold-primary');
+                btn.classList.add('border-white/10');
             });
-            event.currentTarget.classList.add('active');
+            event.currentTarget.classList.add('border-gold-primary');
+            event.currentTarget.classList.remove('border-white/10');
 
             if (backgroundImage) {
                 renderStoryCanvas();
@@ -852,15 +325,14 @@
 
         async function fetchVerseFromGemini() {
             const apiKey = localStorage.getItem('instaverse_api_key');
-            if (!apiKey) throw new Error("No API Key");
+            if (!apiKey) throw new Error("No hay API Key configurada");
 
             const prompt = `Selecciona un versículo bíblico corto y reconfortante sobre la temática de: ${currentTopic.toUpperCase()}. 
                             Devuelve la respuesta estrictamente en un formato JSON plano, con exactamente dos propiedades:
                             "verse" (el texto del versículo) y "citation" (el libro, capítulo y versículo, ej: "Filipenses 4:13").
                             No añadas explicaciones, ni etiquetas markdown, solo un JSON directo.`;
 
-            // Usando gemini-2.5-flash-preview-09-2025 para generación de texto
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 generationConfig: {
@@ -882,7 +354,7 @@
                 body: JSON.stringify(payload)
             });
 
-            if (!response.ok) throw new Error("Error obteniendo versículo");
+            if (!response.ok) throw new Error("Error obteniendo versículo de Gemini");
 
             const result = await response.json();
             const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -891,7 +363,7 @@
 
         async function fetchImageFromImagen() {
             const apiKey = localStorage.getItem('instaverse_api_key');
-            if (!apiKey) throw new Error("No API Key");
+            if (!apiKey) throw new Error("No hay API Key configurada");
 
             const userPrompt = document.getElementById('prompt-input').value;
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
@@ -907,12 +379,12 @@
                 body: JSON.stringify(payload)
             });
 
-            if (!response.ok) throw new Error("Error generando imagen");
+            if (!response.ok) throw new Error("Error llamando a la generación de Imagen");
 
             const result = await response.json();
             const base64Data = result.predictions?.[0]?.bytesBase64Encoded;
             
-            if (!base64Data) throw new Error("Datos de imagen inválidos");
+            if (!base64Data) throw new Error("Formato de respuesta de imagen no válido");
             return `data:image/png;base64,${base64Data}`;
         }
 
@@ -920,32 +392,35 @@
             const apiKey = localStorage.getItem('instaverse_api_key');
             
             btnGenerate.disabled = true;
-            btnGenerate.innerHTML = `Un momento...`;
+            btnGenerate.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Generando...`;
             placeholder.classList.add('hidden');
             loader.classList.remove('hidden');
 
+            // Si no hay API Key, usamos directamente el render de respaldo estético offline
             if (!apiKey) {
-                // Modo sin conexión/Offline de alto nivel
                 setTimeout(() => {
                     useFallbackRendering();
-                }, 800);
+                }, 1000);
                 return;
             }
 
             try {
-                // Paso 1: Gemini para el texto
+                // Step 1: Text Generation (Gemini)
                 loaderStatus.innerText = "Invocando a Gemini...";
-                loaderSubstatus.innerText = "Obteniendo versículo de " + currentTopic;
+                loaderSubstatus.innerText = "Buscando un versículo de " + currentTopic;
+                loaderIcon.className = "fa-solid fa-brain text-xl animate-pulse";
                 generatedVerse = await fetchVerseFromGemini();
 
-                // Paso 2: Imagen para el fondo abstracto
+                // Step 2: Image Generation (Imagen 4.0)
                 loaderStatus.innerText = "Invocando a Imagen 4.0...";
-                loaderSubstatus.innerText = "Diseñando un fondo abstracto premium";
+                loaderSubstatus.innerText = "Pintando un fondo cauto y abstracto";
+                loaderIcon.className = "fa-solid fa-palette text-xl animate-bounce";
                 const base64Image = await fetchImageFromImagen();
 
-                // Paso 3: Maquetación
-                loaderStatus.innerText = "Maquetando...";
-                loaderSubstatus.innerText = "Aplicando tipografías vectoriales";
+                // Step 3: Draw everything on Canvas
+                loaderStatus.innerText = "Componiendo el lienzo...";
+                loaderSubstatus.innerText = "Aplicando tipografía y maquetación";
+                loaderIcon.className = "fa-solid fa-compass-drafting text-xl animate-spin";
                 
                 backgroundImage = new Image();
                 backgroundImage.src = base64Image;
@@ -954,19 +429,21 @@
                     loader.classList.add('hidden');
                     canvas.classList.remove('hidden');
                     
+                    // Enable download
                     btnDownload.disabled = false;
-                    btnDownload.classList.add('ready');
+                    btnDownload.className = "flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-gold-primary text-darkbg hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-500/10";
                 };
 
             } catch (err) {
-                console.warn("Fallo en la conexión API, cargando motor gráfico estético local...", err);
+                console.warn("Fallo o ausencia de API Key. Iniciando generador offline de alta calidad...", err);
                 useFallbackRendering();
             } finally {
                 btnGenerate.disabled = false;
-                btnGenerate.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg> Generar Diseño Completo`;
+                btnGenerate.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Generar Diseño Completo`;
             }
         }
 
+        // Advanced Wrap Text function for canvas
         function wrapText(context, text, x, y, maxWidth, lineHeight) {
             const words = text.split(' ');
             let line = '';
@@ -990,31 +467,33 @@
         function renderStoryCanvas() {
             if (!backgroundImage) return;
 
-            // Dibujar fondo
+            // 1. Draw Background
             ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
-            // Capa oscura suave para legibilidad del texto
+            // 2. Add subtle dark gradient overlay for readability
             const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, 'rgba(0,0,0,0.45)');
-            gradient.addColorStop(0.5, 'rgba(0,0,0,0.25)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0.65)');
+            gradient.addColorStop(0, 'rgba(0,0,0,0.5)');
+            gradient.addColorStop(0.5, 'rgba(0,0,0,0.2)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0.7)');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Ajuste de sombras
+            // 3. Setup text configuration based on style selected
             ctx.textAlign = 'center';
             ctx.fillStyle = currentTextColor;
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-            ctx.shadowBlur = 15;
+
+            // Drop shadow for legibility
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 20;
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 4;
 
-            // Encabezado
+            // Draw header "VERSÍCULO DEL DÍA"
             ctx.font = 'bold 36px "Plus Jakarta Sans"';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
             ctx.fillText('VERSÍCULO DEL DÍA', canvas.width / 2, 280);
 
-            // Selección de Fuente principal
+            // 4. Wrap & Draw main Verse body
             let mainFont = 'normal 64px "Playfair Display"';
             let lineHeight = 85;
             let padding = 120;
@@ -1034,41 +513,42 @@
             const wrappedLines = wrapText(ctx, `“${generatedVerse.verse}”`, canvas.width / 2, 0, maxTextWidth, lineHeight);
             const totalTextHeight = wrappedLines.length * lineHeight;
             
+            // Calculate vertically centered start position
             let startY = (canvas.height / 2) - (totalTextHeight / 2) + 40;
 
             wrappedLines.forEach((line, index) => {
                 ctx.fillText(line.trim(), canvas.width / 2, startY + (index * lineHeight));
             });
 
-            // Cita bíblica
+            // 5. Draw Citation
             let citationY = startY + totalTextHeight + 60;
             ctx.font = 'bold 38px "Plus Jakarta Sans"';
-            ctx.fillStyle = 'rgba(212, 175, 55, 0.95)';
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.9)';
             ctx.fillText(generatedVerse.citation.toUpperCase(), canvas.width / 2, citationY);
 
-            // Quitar sombras para detalles del footer
+            // Reset shadows for details
             ctx.shadowColor = 'transparent';
             ctx.shadowBlur = 0;
 
-            // Pie decorativo minimalista
+            // 6. Draw subtle watermark footer
             ctx.font = 'normal 28px "Plus Jakarta Sans"';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
             ctx.fillText('creado con @instaverse_ai', canvas.width / 2, canvas.height - 150);
 
-            // Línea divisoria muy delgada
-            ctx.strokeStyle = 'rgba(212, 175, 55, 0.15)';
+            // Subtle divider line at the bottom
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo((canvas.width / 2) - 80, canvas.height - 200);
-            ctx.lineTo((canvas.width / 2) + 80, canvas.height - 200);
+            ctx.moveTo((canvas.width / 2) - 100, canvas.height - 200);
+            ctx.lineTo((canvas.width / 2) + 100, canvas.height - 200);
             ctx.stroke();
         }
 
         function useFallbackRendering() {
-            // Base de datos de versículos estéticos local de respaldo
+            // Generate fallback verse locally
             const fallbacks = {
                 esperanza: [
-                    { verse: "Porque yo sé los pensamientos que tengo acerca de vosotros, pensamientos de paz, y no de mal.", citation: "Jeremías 29:11" },
+                    { verse: "Porque yo sé los pensamientos que tengo acerca de vosotros, dice el Señor, pensamientos de paz, y no de mal.", citation: "Jeremías 29:11" },
                     { verse: "El Señor es mi luz y mi salvación; ¿de quién temeré? El Señor es la fortaleza de mi vida.", citation: "Salmos 27:1" }
                 ],
                 paz: [
@@ -1088,29 +568,28 @@
             const chosenList = fallbacks[currentTopic] || fallbacks.esperanza;
             generatedVerse = chosenList[Math.floor(Math.random() * chosenList.length)];
 
-            // Generador de gradiente premium abstracto por vectores de respaldo
+            // Create canvas procedural background (Luxury dark gold abstract mesh)
+            const gradientBg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 100, canvas.width/2, canvas.height/2, canvas.height);
+            gradientBg.addColorStop(0, '#1c1811'); // Warm gold undertone dark
+            gradientBg.addColorStop(0.5, '#0E1012'); // Dark charcoal
+            gradientBg.addColorStop(1, '#050607'); // True black
+            
+            // Build temporary Image to fit standard logic
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = canvas.width;
             tempCanvas.height = canvas.height;
             const tempCtx = tempCanvas.getContext('2d');
-            
-            // Un fondo oscuro súper cautivador y sobrio (arena beige oscuro y antracita)
-            const gradientBg = tempCtx.createRadialGradient(canvas.width/2, canvas.height/2, 100, canvas.width/2, canvas.height/2, canvas.height);
-            gradientBg.addColorStop(0, '#1c1811'); // Toques dorados terracota suaves
-            gradientBg.addColorStop(0.6, '#0c0d0f'); // Antracita
-            gradientBg.addColorStop(1, '#040506'); // Negro absoluto
-            
             tempCtx.fillStyle = gradientBg;
             tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
             
-            // Añadir texturas sutiles al fondo (Arte moderno vectorizado)
-            tempCtx.fillStyle = 'rgba(212, 175, 55, 0.02)';
+            // Draw some abstract cauto vector circles for art
+            tempCtx.fillStyle = 'rgba(212, 175, 55, 0.03)';
             tempCtx.beginPath();
             tempCtx.arc(canvas.width * 0.8, canvas.height * 0.2, 500, 0, Math.PI * 2);
             tempCtx.fill();
             
             tempCtx.beginPath();
-            tempCtx.arc(canvas.width * 0.2, canvas.height * 0.8, 600, 0, Math.PI * 2);
+            tempCtx.arc(canvas.width * 0.1, canvas.height * 0.8, 400, 0, Math.PI * 2);
             tempCtx.fill();
 
             backgroundImage = new Image();
@@ -1120,10 +599,11 @@
                 loader.classList.add('hidden');
                 canvas.classList.remove('hidden');
                 btnDownload.disabled = false;
-                btnDownload.classList.add('ready');
+                btnDownload.className = "flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-gold-primary text-darkbg hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-500/10";
             };
         }
 
+        // Trigger safe client-side download
         function downloadStory() {
             if (!backgroundImage) return;
             
