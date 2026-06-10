@@ -6,7 +6,7 @@
     <title>InstaVerse AI - Devocionales de Lujo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -85,7 +85,7 @@
             <div class="bg-darkcard border border-white/5 rounded-2xl p-6 premium-glow space-y-5">
                 <div>
                     <h2 class="text-white font-serif text-xl font-medium">Estilo del Devocional</h2>
-                    <p class="text-xs text-gray-400 mt-1">Generación omni-bíblica global basada en la Nueva Versión Internacional (NVI).</p>
+                    <p class="text-xs text-gray-400 mt-1">Generación aleatoria forzada y ultra variada basada en la NVI.</p>
                 </div>
 
                 <hr class="border-white/5">
@@ -235,9 +235,11 @@
             const apiKey = localStorage.getItem('instaverse_api_key');
             if (!apiKey) throw new Error("Offline");
 
-            // PROMPT CAMBIADO: Se quita la restricción de 4 libros y se obliga el uso estricto de la traducción NVI cubriendo todo el canon bíblico.
-            const prompt = `Actúa como un sofisticado generador de contenido cristiano clásico. Selecciona un versículo bíblico edificante AL AZAR que provenga de CUALQUIER libro del canon bíblico completo de 66 libros (desde el Pentateuco, libros históricos, poéticos, profetas mayores/menores, evangelios, Hechos, Epístolas o Apocalipsis). No te limites a los libros comunes. El versículo debe estar extraído textualmente de la traducción: "Nueva Versión Internacional (NVI)".
-            El pasaje debe estar enfocado en el concepto teológico de: ${currentFocus.toUpperCase()}.
+            // SEED DINÁMICA: Creamos una marca de tiempo única por cada clic
+            const uniqueSeed = Date.now() + Math.floor(Math.random() * 10000);
+
+            const prompt = `[Semilla Aleatoria Única de Consulta: ${uniqueSeed}]. Actúa como un sofisticado generador de contenido teológico de alta fidelidad. Tu misión absoluta es evitar repetir versículos generados previamente. Selecciona un versículo bíblico completamente diferente, atípico, raro o nuevo que provenga de CUALQUIER libro del canon bíblico completo de 66 libros (viaja de forma impredecible por el Pentateuco, los libros históricos, la poesía del Antiguo Testamento, profetas mayores o menores, evangelios, o epístolas apostólicas). 
+            El versículo DEBE estar extraído textualmente de la traducción: "Nueva Versión Internacional (NVI)" y estar directamente relacionado con el concepto teológico de: ${currentFocus.toUpperCase()}.
 
             Devuelve la respuesta ESTRICTAMENTE en formato JSON plano con esta estructura exacta, sin código markdown, sin texto extra externo:
             {
@@ -251,7 +253,15 @@
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } })
+                // SOLUCIÓN CLAVE: Se añadieron parámetros 'temperature' y 'topP' para activar la aleatoriedad física en la API
+                body: JSON.stringify({ 
+                    contents: [{ parts: [{ text: prompt }] }], 
+                    generationConfig: { 
+                        responseMimeType: "application/json",
+                        temperature: 1.0,
+                        topP: 0.95
+                    } 
+                })
             });
 
             if (!response.ok) throw new Error("Error en Gemini");
@@ -313,7 +323,7 @@
                 };
 
             } catch (err) {
-                console.warn("Llamadas API fallidas. Cambiando a motor procedural de respaldo de alta fidelidad.", err);
+                console.warn("Llamadas API fallidas. Cambiando a motor de respaldo.", err);
                 useOfflineFallback();
             }
         }
@@ -328,7 +338,6 @@
             btnDownload.className = "flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-gold-primary text-darkbg hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg";
         }
 
-        // Algoritmo de envoltura inteligente para Canvas
         function wrapText(context, text, maxWidth) {
             const words = text.split(' ');
             let line = '';
@@ -348,10 +357,8 @@
         }
 
         function renderDevocionalCanvas() {
-            // 1. Dibujar el fondo base
             ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
-            // 2. Capa cinematográfica oscura mate para perfecta legibilidad
             const overlay = ctx.createLinearGradient(0, 0, 0, canvas.height);
             overlay.addColorStop(0, 'rgba(5, 5, 6, 0.75)');
             overlay.addColorStop(0.3, 'rgba(7, 8, 9, 0.45)');
@@ -360,28 +367,23 @@
             ctx.fillStyle = overlay;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // 3. Detalle de Lujo: Borde fino refinado alrededor de toda la imagen
             ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
             ctx.lineWidth = 4;
             ctx.beginPath();
             ctx.roundRect(30, 30, canvas.width - 60, canvas.height - 60, 40);
             ctx.stroke();
 
-            // Configuración Global de Textos
             ctx.textAlign = 'center';
             ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
             ctx.shadowBlur = 15;
 
-            // ----------------------------------------------------
-            // SECCIÓN SUPERIOR: Encabezado
-            // ----------------------------------------------------
+            // Encabezado
             ctx.font = '600 28px "Plus Jakarta Sans"';
             ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
             ctx.letterSpacing = "6px";
             ctx.fillText('VERSÍCULO DEL DÍA', canvas.width / 2, 160);
             ctx.letterSpacing = "0px";
 
-            // Separador superior sutil debajo del título
             ctx.strokeStyle = 'rgba(212, 175, 55, 0.15)';
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -389,9 +391,7 @@
             ctx.lineTo((canvas.width / 2) + 60, 200);
             ctx.stroke();
 
-            // ----------------------------------------------------
-            // SECCIÓN CENTRAL: Gran Versículo Bíblico (Serif)
-            // ----------------------------------------------------
+            // Versículo Bíblico
             ctx.font = 'italic 52px "Playfair Display"';
             ctx.fillStyle = '#fcfaf2';
             let maxTextWidth = canvas.width - 240; 
@@ -404,9 +404,7 @@
                 ctx.fillText(line, canvas.width / 2, verseStartY + (index * verseLineHeight));
             });
 
-            // ----------------------------------------------------
-            // SUB-CENTRO: Referencia Bíblica (Sans, Dorada)
-            // ----------------------------------------------------
+            // Referencia Bíblica
             let citationY = verseStartY + (verseLines.length * verseLineHeight) + 40;
             ctx.font = 'bold 30px "Plus Jakarta Sans"';
             ctx.fillStyle = '#d4af37';
@@ -414,16 +412,13 @@
             ctx.fillText(generatedData.citation.toUpperCase(), canvas.width / 2, citationY);
             ctx.letterSpacing = "0px";
 
-            // Gran separador central de sección
             ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
             ctx.beginPath();
             ctx.moveTo((canvas.width / 2) - 180, citationY + 65);
             ctx.lineTo((canvas.width / 2) + 180, citationY + 65);
             ctx.stroke();
 
-            // ----------------------------------------------------
-            // SECCIÓN INFERIOR: Reflexión Estilo Puritano (Sans Líquida)
-            // ----------------------------------------------------
+            // Reflexión
             ctx.font = '400 34px "Plus Jakarta Sans"';
             ctx.fillStyle = 'rgba(255, 255, 255, 0.82)';
             let reflectionLineHeight = 54;
@@ -434,9 +429,7 @@
                 ctx.fillText(line, canvas.width / 2, reflectionStartY + (index * reflectionLineHeight));
             });
 
-            // ----------------------------------------------------
-            // SECCIÓN PIE: Frase Final Memorable (Ajuste Dinámico)
-            // ----------------------------------------------------
+            // Frase Final
             let finalPhraseStartY = reflectionStartY + (reflectionLines.length * reflectionLineHeight) + 70;
             ctx.font = 'italic bold 38px "Playfair Display"';
             ctx.fillStyle = '#f5eecf';
@@ -448,9 +441,7 @@
                 ctx.fillText(line, canvas.width / 2, finalPhraseStartY + (index * finalPhraseLineHeight));
             });
 
-            // ----------------------------------------------------
-            // MARCA DE AGUA EXCLUSIVA: @fa_of
-            // ----------------------------------------------------
+            // Marca de agua
             ctx.shadowColor = 'transparent';
             ctx.font = '500 26px "Plus Jakarta Sans"';
             ctx.fillStyle = 'rgba(212, 175, 55, 0.35)';
@@ -463,14 +454,14 @@
                 {
                     verse: "Por tanto, el Señor mismo os dará señal: La virgen concebirá y dará a luz un hijo, y lo llamará Emanuel.",
                     citation: "Isaías 7:14 (NVI)",
-                    reflection: "Emanuel, Dios con nosotros. Qué misterio tan insondable y glorioso para el atribulado peregrino. No es un monarca distante observando el frío invierno desde su palacio, sino el Rey eterno caminando a nuestro lado en medio del lodo y la aflicción diaria. Confía en Su cercanía.",
+                    reflection: "Emanuel, Dios con nosotros. Qué misterio tan insondable y glorioso para el atribulado peregrino. No es un monarca distante observando el frío invierno desde su palacio, sino el Rey eterno caminando a nuestro lado en medio del lodo y la aflicción diaria.",
                     finalPhrase: "Si Dios camina a tu lado, la noche más oscura se vuelve mediodía."
                 },
                 {
-                    verse: "Confía en el Señor con todo tu corazón, y no te apoyes en tu propia prudencia.",
-                    citation: "Proverbios 3:5 (NVI)",
-                    reflection: "Nuestra razón es un faro que a menudo se quiebra ante la densa niebla del porvenir. Qué sabio es rendir el timón a la infalible providencia del Altísimo. El camino trazado por Su soberana voluntad avanza en línea recta, aun cuando tus ojos solo perciban curvas peligrosas. Entrégate a Su dirección.",
-                    finalPhrase: "Cerrar los ojos a la lógica humana es abrirlos por completo a la provisión divina."
+                    verse: "¡Levántate, resplandece, porque ha llegado tu luz y la gloria del Señor brilla sobre ti!",
+                    citation: "Isaías 60:1 (NVI)",
+                    reflection: "Cuando las sombras de este siglo nublan tu horizonte, recuerda que la luz que te sostiene no proviene de fuentes terrenas extinguibles. La gloria de tu Redentor ha amanecido sobre tu ser, otorgándote una investidura celestial incorruptible.",
+                    finalPhrase: "Tu brillo no es propio, es el fiel reflejo de la llama del Altísimo."
                 }
             ];
 
@@ -480,15 +471,8 @@
             tempCanvas.width = canvas.width;
             tempCanvas.height = canvas.height;
             const tempCtx = tempCanvas.getContext('2d');
-
             tempCtx.fillStyle = '#060607';
             tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-            let radGrad1 = tempCtx.createRadialGradient(canvas.width * 0.8, canvas.height * 0.2, 50, canvas.width * 0.8, canvas.height * 0.2, 600);
-            radGrad1.addColorStop(0, 'rgba(184, 129, 36, 0.08)');
-            radGrad1.addColorStop(1, 'rgba(0,0,0,0)');
-            tempCtx.fillStyle = radGrad1;
-            tempCtx.beginPath(); tempCtx.arc(canvas.width * 0.8, canvas.height * 0.2, 600, 0, Math.PI*2); tempCtx.fill();
 
             backgroundImage = new Image();
             backgroundImage.src = tempCanvas.toDataURL('image/jpeg');
