@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creador de Versículos Estéticos con IA</title>
+    <title>InstaVerse AI - Devocionales de Lujo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,7 +16,6 @@
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        cursive: ['Alex Brush', 'cursive'],
                     },
                     colors: {
                         gold: {
@@ -26,42 +25,25 @@
                             300: '#dfbe64',
                             400: '#d4a337',
                             500: '#b88124',
-                            600: '#955f1b',
-                            700: '#744317',
-                            800: '#5c3315',
                             primary: '#d4af37',
                         },
-                        darkbg: '#0B0C0E',
-                        darkcard: '#121416',
+                        darkbg: '#070809',
+                        darkcard: '#0F1113',
                     }
                 }
             }
         }
     </script>
     <style>
-        .premium-glow {
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(212, 175, 55, 0.2);
-            border-radius: 3px;
-        }
-        /* Mobile aspect ratio container */
-        .story-preview-container {
-            aspect-ratio: 9/16;
-            max-height: 65vh;
-        }
+        .premium-glow { box-shadow: 0 0 40px rgba(212, 175, 55, 0.05); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.01); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.2); border-radius: 3px; }
+        .story-preview-container { aspect-ratio: 9/16; max-height: 70vh; }
     </style>
 </head>
-<body class="bg-darkbg text-gray-300 font-sans antialiased min-h-screen selection:bg-gold-primary selection:text-darkbg flex flex-col justify-between">
+<body class="bg-darkbg text-gray-300 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Top Header -->
     <header class="border-b border-white/5 bg-darkcard/40 backdrop-blur-md py-4 px-6 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -70,7 +52,7 @@
                 </div>
                 <div>
                     <h1 class="text-white font-serif text-lg font-semibold leading-tight">InstaVerse AI</h1>
-                    <p class="text-[10px] text-gold-primary tracking-widest uppercase font-medium">Diseño Diarios con Gemini</p>
+                    <p class="text-[10px] text-gold-primary tracking-widest uppercase font-medium">Devocionales Premium con Gemini</p>
                 </div>
             </div>
             <button onclick="toggleSettings()" class="text-gray-400 hover:text-gold-primary transition-colors text-sm flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
@@ -79,21 +61,18 @@
         </div>
     </header>
 
-    <!-- Main Workspace -->
     <main class="max-w-6xl mx-auto px-4 py-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
         
-        <!-- Controls Sidebar (Left Column - 5 cols) -->
         <section class="lg:col-span-5 space-y-6 flex flex-col justify-start">
             
-            <!-- API Settings Panel (Collapsible) -->
             <div id="settings-panel" class="bg-darkcard border border-amber-500/20 rounded-2xl p-5 space-y-4 premium-glow hidden">
                 <div class="flex justify-between items-center">
                     <h3 class="text-white font-serif text-sm font-medium flex items-center gap-2">
-                        <i class="fa-solid fa-key text-gold-primary"></i> Configurar Clave API de Gemini
+                        <i class="fa-solid fa-key text-gold-primary"></i> Clave API de Gemini / Google AI Studio
                     </h3>
                     <button onclick="toggleSettings()" class="text-gray-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <p class="text-[11px] text-gray-400">Inserta tu API Key gratuita de Google AI Studio. Se almacena localmente en tu iPhone de forma segura.</p>
+                <p class="text-[11px] text-gray-400">Inserta tu API Key para activar la generación teológica e imágenes con IA. Se guarda localmente de forma segura.</p>
                 <div class="space-y-2">
                     <input type="password" id="api-key-input" placeholder="AIzaSy..." class="w-full text-xs bg-black/40 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-gold-primary transition-all">
                     <div class="flex gap-2">
@@ -101,261 +80,181 @@
                         <button onclick="clearApiKey()" class="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium px-3 rounded-lg text-xs transition-colors">Limpiar</button>
                     </div>
                 </div>
-                <p class="text-[10px] text-gray-500">¿No tienes clave? El generador utilizará un sistema estético offline de respaldo de forma automática.</p>
             </div>
 
-            <!-- Main controls -->
             <div class="bg-darkcard border border-white/5 rounded-2xl p-6 premium-glow space-y-5">
                 <div>
-                    <h2 class="text-white font-serif text-xl font-medium">Configura tu Historia</h2>
-                    <p class="text-xs text-gray-400 mt-1">Elige la temática del versículo y el estilo del fondo cauto.</p>
+                    <h2 class="text-white font-serif text-xl font-medium">Estilo del Devocional</h2>
+                    <p class="text-xs text-gray-400 mt-1">Generación omni-bíblica global basada en la Nueva Versión Internacional (NVI).</p>
                 </div>
 
                 <hr class="border-white/5">
 
-                <!-- Temas del Versículo -->
                 <div class="space-y-2">
-                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Temática Bíblica</label>
-                    <div class="grid grid-cols-2 gap-2" id="topic-selector">
-                        <button onclick="setTopic('esperanza')" class="topic-btn active px-3 py-2.5 rounded-xl border border-gold-primary bg-gold-primary/10 text-white font-medium text-xs text-left transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-anchor text-gold-primary"></i> Esperanza
+                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Énfasis del Día (Temas)</label>
+                    <div class="grid grid-cols-2 gap-2 max-h-[190px] overflow-y-auto pr-1 custom-scrollbar">
+                        <button onclick="setFocus('providencia')" class="focus-btn active px-3 py-2 rounded-xl border border-gold-primary bg-gold-primary/10 text-white font-medium text-xs text-left transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-sun text-gold-primary"></i> Providencia Divina
                         </button>
-                        <button onclick="setTopic('paz')" class="topic-btn px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
-                            <i class="fa-solid fa-dove"></i> Paz Interior
+                        <button onclick="setFocus('gracia')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-dove"></i> Gracia & Reposo
                         </button>
-                        <button onclick="setTopic('fortaleza')" class="topic-btn px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
-                            <i class="fa-solid fa-dumbbell"></i> Fortaleza
+                        <button onclick="setFocus('soberania')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-crown"></i> Soberanía de Dios
                         </button>
-                        <button onclick="setTopic('gratitud')" class="topic-btn px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
-                            <i class="fa-solid fa-heart"></i> Gratitud
+                        <button onclick="setFocus('fidelidad')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-anchor"></i> Refugio & Roca
+                        </button>
+                        <button onclick="setFocus('sabiduria')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-compass"></i> Sabiduría & Camino
+                        </button>
+                        <button onclick="setFocus('redencion')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-cross"></i> Cruz & Redención
+                        </button>
+                        <button onclick="setFocus('esperanza')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-sun"></i> Esperanza Eterna
+                        </button>
+                        <button onclick="setFocus('santidad')" class="focus-btn px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 text-xs text-left transition-all hover:bg-white/[0.04] flex items-center gap-2">
+                            <i class="fa-solid fa-fire-flame-simple"></i> Santidad & Devoción
                         </button>
                     </div>
                 </div>
 
-                <!-- Estilos de Tipografía -->
-                <div class="space-y-2">
-                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Estilo de Fuente</label>
-                    <div class="grid grid-cols-3 gap-2">
-                        <button onclick="setFontStyle('serif')" class="font-btn active py-2 rounded-lg border border-gold-primary bg-gold-primary/5 text-white font-serif text-xs transition-all">Serif Pro</button>
-                        <button onclick="setFontStyle('sans')" class="font-btn py-2 rounded-lg border border-white/5 bg-white/[0.02] text-gray-400 font-sans text-xs transition-all">Minimal</button>
-                        <button onclick="setFontStyle('cursive')" class="font-btn py-2 rounded-lg border border-white/5 bg-white/[0.02] text-gray-400 font-cursive text-base transition-all">Elegante</button>
-                    </div>
-                </div>
-
-                <!-- Color de Fuente -->
-                <div class="space-y-2">
-                    <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase block">Color del Texto</label>
-                    <div class="flex items-center gap-3">
-                        <button onclick="setTextColor('#ffffff')" class="color-btn border-2 border-gold-primary w-8 h-8 rounded-full bg-white transition-all focus:outline-none" title="Blanco Puro"></button>
-                        <button onclick="setTextColor('#F5EECD')" class="color-btn border border-white/10 w-8 h-8 rounded-full bg-[#F5EECD] transition-all focus:outline-none" title="Crema Cálido"></button>
-                        <button onclick="setTextColor('#1A1C1E')" class="color-btn border border-white/10 w-8 h-8 rounded-full bg-[#1A1C1E] transition-all focus:outline-none" title="Gris Profundo"></button>
-                    </div>
-                </div>
-
-                <!-- Prompt del Fondo IA -->
                 <div class="space-y-2">
                     <div class="flex justify-between items-center">
-                        <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase">Fondo IA (Diseño Abstracto)</label>
-                        <span class="text-[10px] text-amber-500 font-medium"><i class="fa-solid fa-circle-exclamation"></i> Cauto & Elegante</span>
+                        <label class="text-xs font-semibold text-gray-400 tracking-wider uppercase">Prompt Visual para Imagen 4.0</label>
                     </div>
-                    <textarea id="prompt-input" rows="3" class="w-full text-xs bg-black/30 border border-white/10 rounded-xl p-3 text-gray-300 focus:outline-none focus:border-gold-primary transition-all custom-scrollbar">A minimalist fine art textured background, abstract organic shapes, professional muted warm gray and beige neutral palette, soft studio shadows, completely clean of text, elegant spacious canvas</textarea>
+                    <textarea id="prompt-input" rows="3" class="w-full text-xs bg-black/30 border border-white/10 rounded-xl p-3 text-gray-300 focus:outline-none focus:border-gold-primary transition-all custom-scrollbar">A deep rich black background with soft elegant warm dark brown and amber undertones, large blurry abstract out-of-focus circular glowing shapes in the background, moody fine art texture, soft studio atmospheric lighting, luxury solemn and contemplative aesthetic, completely clean of text, spacious dark negative space canvas, 9:16 aspect ratio</textarea>
                 </div>
 
-                <!-- Trigger Button -->
-                <button onclick="generateEverything()" id="btn-generate" class="w-full bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-600 hover:to-gold-500 text-darkbg font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg hover:shadow-gold-500/10 flex items-center justify-center gap-2 group text-sm">
+                <button onclick="generateEverything()" id="btn-generate" class="w-full bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-500 hover:to-gold-500 text-darkbg font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group text-sm">
                     <i class="fa-solid fa-wand-magic-sparkles group-hover:rotate-12 transition-all"></i>
-                    Generar Diseño Completo
+                    Generar Devocional Premium
                 </button>
             </div>
 
-            <!-- Ayuda rápida -->
-            <div class="p-4 bg-white/[0.02] border border-white/5 rounded-xl flex gap-3 items-start text-xs">
-                <i class="fa-solid fa-circle-info text-gold-primary mt-0.5"></i>
-                <div class="text-gray-400 leading-relaxed">
-                    <strong class="text-white block mb-0.5">Cómo instalarlo en tu iPhone:</strong>
-                    Abre esta web en tu iPhone con Safari, dale a "Compartir" y selecciona "Añadir a pantalla de inicio". ¡Se convertirá en una App instantánea!
-                </div>
+            <div class="p-4 bg-white/[0.01] border border-white/5 rounded-xl flex gap-3 items-center text-xs text-gray-500">
+                <i class="fa-solid fa-signature text-gold-primary"></i>
+                <span>Estampa de autor configurada automáticamente como: <strong class="text-gray-300">@fa_of</strong></span>
             </div>
         </section>
 
-        <!-- Preview Column (Right Column - 7 cols) -->
         <section class="lg:col-span-7 flex flex-col items-center justify-center space-y-4">
             
-            <!-- Realtime Interactive Canvas -->
-            <div class="w-full max-w-[360px] story-preview-container bg-neutral-900 rounded-3xl overflow-hidden shadow-2xl relative border border-white/10 flex items-center justify-center group">
+            <div class="w-full max-w-[340px] story-preview-container bg-neutral-950 rounded-3xl overflow-hidden shadow-2xl relative border border-white/10 flex items-center justify-center">
                 <canvas id="story-canvas" width="1080" height="1920" class="w-full h-full object-cover hidden"></canvas>
                 
-                <!-- Skeleton / Placeholder / Loader overlay -->
-                <div id="canvas-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-darkcard space-y-4 z-10 transition-opacity duration-300">
-                    <div class="w-16 h-16 rounded-full bg-gold-primary/10 flex items-center justify-center text-gold-primary text-2xl animate-pulse">
-                        <i class="fa-solid fa-image"></i>
+                <div id="canvas-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-darkcard space-y-4 z-10">
+                    <div class="w-14 h-14 rounded-full bg-gold-primary/10 flex items-center justify-center text-gold-primary text-xl animate-pulse">
+                        <i class="fa-solid fa-scroll"></i>
                     </div>
                     <div>
-                        <h3 class="text-white font-serif text-lg font-medium">Tu Historia de Instagram</h3>
-                        <p class="text-xs text-gray-500 max-w-xs mt-1">Presiona el botón de generar para crear un diseño personalizado único con Inteligencia Artificial.</p>
+                        <h3 class="text-white font-serif text-base font-medium">Devocional Cristiano Diarios</h3>
+                        <p class="text-[11px] text-gray-500 max-w-xs mt-1">Presiona el botón para redactar el texto teológico clásico y pintar el fondo contemplativo de lujo.</p>
                     </div>
                 </div>
 
-                <!-- Custom Elegant Loader -->
-                <div id="canvas-loader" class="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-8 text-center space-y-5 z-20 hidden">
-                    <div class="relative w-20 h-20">
+                <div id="canvas-loader" class="absolute inset-0 bg-black/90 flex flex-col items-center justify-center p-8 text-center space-y-5 z-20 hidden">
+                    <div class="relative w-16 h-16">
                         <div class="absolute inset-0 rounded-full border-4 border-gold-primary/10"></div>
                         <div class="absolute inset-0 rounded-full border-4 border-t-gold-primary animate-spin"></div>
-                        <div class="absolute inset-0 flex items-center justify-center text-gold-primary">
-                            <i id="loader-icon" class="fa-solid fa-brain text-xl animate-pulse"></i>
-                        </div>
                     </div>
                     <div>
-                        <h4 class="text-white font-serif text-sm font-semibold tracking-wide" id="loader-status">Invocando a Gemini...</h4>
-                        <p class="text-[10px] text-gray-400 mt-1 tracking-wider" id="loader-substatus">Obteniendo versículo inspirado</p>
+                        <h4 class="text-white font-serif text-xs font-semibold tracking-wide" id="loader-status">Consultando las Escrituras...</h4>
+                        <p class="text-[10px] text-gold-primary mt-1 tracking-wider uppercase" id="loader-substatus">Gemini AI redactando</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Download Button -->
-            <div class="flex items-center gap-3 w-full max-w-[360px]">
-                <button onclick="downloadStory()" id="btn-download" disabled class="flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-white/5 border border-white/10 text-gray-400 cursor-not-allowed hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Descargar Imagen (.JPG)
+            <div class="flex items-center gap-3 w-full max-w-[340px]">
+                <button onclick="downloadStory()" id="btn-download" disabled class="flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Exportar Historia Alta Definición (.JPG)
                 </button>
             </div>
-            <p class="text-[11px] text-gray-500 text-center max-w-xs">La imagen se descarga en formato vertical de alta definición (1080x1920 px) optimizada para Instagram Stories.</p>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 bg-darkcard/20 py-4 text-center text-[10px] text-gray-500">
-        <p>&copy; 2026 InstaVerse AI. Potenciado por Google Gemini e Imagen 4.0.</p>
+    <footer class="border-t border-white/5 bg-darkcard/20 py-4 text-center text-[10px] text-gray-600">
+        <p>&copy; 2026 InstaVerse AI &bull; Optimizado para @fa_of &bull; Impulsado por Gemini 1.5 & Imagen 4.0</p>
     </footer>
 
     <script>
-        let currentTopic = 'esperanza';
-        let currentFontStyle = 'serif';
-        let currentTextColor = '#ffffff';
-        let generatedVerse = { verse: "", citation: "" };
+        let currentFocus = 'providencia';
+        let generatedData = { verse: "", citation: "", reflection: "", finalPhrase: "" };
         let backgroundImage = null;
         
-        // UI Nodes
         const canvas = document.getElementById('story-canvas');
         const ctx = canvas.getContext('2d');
         const placeholder = document.getElementById('canvas-placeholder');
         const loader = document.getElementById('canvas-loader');
         const loaderStatus = document.getElementById('loader-status');
         const loaderSubstatus = document.getElementById('loader-substatus');
-        const loaderIcon = document.getElementById('loader-icon');
         const btnGenerate = document.getElementById('btn-generate');
         const btnDownload = document.getElementById('btn-download');
         const apiKeyInput = document.getElementById('api-key-input');
         const settingsPanel = document.getElementById('settings-panel');
 
-        // Load Key on Startup
         window.onload = function() {
             const savedKey = localStorage.getItem('instaverse_api_key');
-            if (savedKey) {
-                apiKeyInput.value = savedKey;
-            }
+            if (savedKey) apiKeyInput.value = savedKey;
         }
 
-        function toggleSettings() {
-            settingsPanel.classList.toggle('hidden');
-        }
-
+        function toggleSettings() { settingsPanel.classList.toggle('hidden'); }
+        
         function saveApiKey() {
             const key = apiKeyInput.value.trim();
             if (key) {
                 localStorage.setItem('instaverse_api_key', key);
-                alert("¡Clave de API guardada exitosamente!");
+                alert("¡Clave de API guardada!");
                 settingsPanel.classList.add('hidden');
-            } else {
-                alert("Por favor ingresa una clave válida.");
             }
         }
 
         function clearApiKey() {
             localStorage.removeItem('instaverse_api_key');
             apiKeyInput.value = "";
-            alert("Clave de API removida.");
+            alert("Clave removida.");
         }
 
-        // Set topic button active styling
-        function setTopic(topic) {
-            currentTopic = topic;
-            document.querySelectorAll('.topic-btn').forEach(btn => {
+        function setFocus(focus) {
+            currentFocus = focus;
+            document.querySelectorAll('.focus-btn').forEach(btn => {
                 btn.classList.remove('active', 'border-gold-primary', 'bg-gold-primary/10', 'text-white');
                 btn.classList.add('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
-                const icon = btn.querySelector('i');
-                if (icon) icon.classList.remove('text-gold-primary');
+                const badge = btn.querySelector('i');
+                if(badge) badge.classList.remove('text-gold-primary');
             });
             const activeBtn = event.currentTarget;
             activeBtn.classList.add('active', 'border-gold-primary', 'bg-gold-primary/10', 'text-white');
-            activeBtn.classList.remove('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
             const icon = activeBtn.querySelector('i');
             if (icon) icon.classList.add('text-gold-primary');
         }
 
-        // Set font button active styling
-        function setFontStyle(style) {
-            currentFontStyle = style;
-            document.querySelectorAll('.font-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-gold-primary', 'bg-gold-primary/5', 'text-white');
-                btn.classList.add('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
-            });
-            event.currentTarget.classList.add('active', 'border-gold-primary', 'bg-gold-primary/5', 'text-white');
-            event.currentTarget.classList.remove('border-white/5', 'bg-white/[0.02]', 'text-gray-400');
-            
-            if (backgroundImage) {
-                renderStoryCanvas();
-            }
-        }
-
-        // Set color active styling
-        function setTextColor(color) {
-            currentTextColor = color;
-            document.querySelectorAll('.color-btn').forEach(btn => {
-                btn.classList.remove('border-gold-primary');
-                btn.classList.add('border-white/10');
-            });
-            event.currentTarget.classList.add('border-gold-primary');
-            event.currentTarget.classList.remove('border-white/10');
-
-            if (backgroundImage) {
-                renderStoryCanvas();
-            }
-        }
-
-        async function fetchVerseFromGemini() {
+        async function fetchDevocionalFromGemini() {
             const apiKey = localStorage.getItem('instaverse_api_key');
-            if (!apiKey) throw new Error("No hay API Key configurada");
+            if (!apiKey) throw new Error("Offline");
 
-            const prompt = `Selecciona un versículo bíblico corto y reconfortante sobre la temática de: ${currentTopic.toUpperCase()}. 
-                            Devuelve la respuesta estrictamente en un formato JSON plano, con exactamente dos propiedades:
-                            "verse" (el texto del versículo) y "citation" (el libro, capítulo y versículo, ej: "Filipenses 4:13").
-                            No añadas explicaciones, ni etiquetas markdown, solo un JSON directo.`;
+            // PROMPT CAMBIADO: Se quita la restricción de 4 libros y se obliga el uso estricto de la traducción NVI cubriendo todo el canon bíblico.
+            const prompt = `Actúa como un sofisticado generador de contenido cristiano clásico. Selecciona un versículo bíblico edificante AL AZAR que provenga de CUALQUIER libro del canon bíblico completo de 66 libros (desde el Pentateuco, libros históricos, poéticos, profetas mayores/menores, evangelios, Hechos, Epístolas o Apocalipsis). No te limites a los libros comunes. El versículo debe estar extraído textualmente de la traducción: "Nueva Versión Internacional (NVI)".
+            El pasaje debe estar enfocado en el concepto teológico de: ${currentFocus.toUpperCase()}.
 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            verse: { type: "STRING" },
-                            citation: { type: "STRING" }
-                        },
-                        required: ["verse", "citation"]
-                    }
-                }
-            };
+            Devuelve la respuesta ESTRICTAMENTE en formato JSON plano con esta estructura exacta, sin código markdown, sin texto extra externo:
+            {
+              "verse": "Texto exacto del versículo en la traducción NVI sin comillas integradas",
+              "citation": "Libro Capítulo:Versículo (NVI)",
+              "reflection": "Escribe una reflexión devocional profunda de entre 40 y 80 palabras. Adopta el tono del puritano Charles Spurgeon, los Padres Apostólicos o antiguos predicadores reformados. Debe sonar como una nota pastoral personal, cálida, sabia y reverente de un mentor. Usa imágenes evocadoras como el ancla, el refugio, la luz, el camino, el amanecer, el rocío matutino o el descanso. NO uses emojis, NO hagas listas, NO uses hashtags ni nombres de autores.",
+              "finalPhrase": "Una frase final corta y memorable, conectada naturalmente con la reflexión, de máximo 15 palabras."
+            }`;
 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } })
             });
 
-            if (!response.ok) throw new Error("Error obteniendo versículo de Gemini");
-
+            if (!response.ok) throw new Error("Error en Gemini");
             const result = await response.json();
             const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
             return JSON.parse(text);
@@ -363,252 +262,245 @@
 
         async function fetchImageFromImagen() {
             const apiKey = localStorage.getItem('instaverse_api_key');
-            if (!apiKey) throw new Error("No hay API Key configurada");
+            if (!apiKey) throw new Error("Offline");
 
             const userPrompt = document.getElementById('prompt-input').value;
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
             
-            const payload = {
-                instances: { prompt: userPrompt },
-                parameters: { sampleCount: 1 }
-            };
-
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({
+                    instances: [{ prompt: userPrompt }],
+                    parameters: { sampleCount: 1, aspectRatio: "9:16", outputMimeType: "image/jpeg" }
+                })
             });
 
-            if (!response.ok) throw new Error("Error llamando a la generación de Imagen");
-
+            if (!response.ok) throw new Error("Error en Imagen");
             const result = await response.json();
             const base64Data = result.predictions?.[0]?.bytesBase64Encoded;
-            
-            if (!base64Data) throw new Error("Formato de respuesta de imagen no válido");
-            return `data:image/png;base64,${base64Data}`;
+            if (!base64Data) throw new Error("No bytes");
+            return `data:image/jpeg;base64,${base64Data}`;
         }
 
         async function generateEverything() {
             const apiKey = localStorage.getItem('instaverse_api_key');
             
             btnGenerate.disabled = true;
-            btnGenerate.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Generando...`;
+            btnGenerate.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Componiendo...`;
             placeholder.classList.add('hidden');
             loader.classList.remove('hidden');
 
-            // Si no hay API Key, usamos directamente el render de respaldo estético offline
             if (!apiKey) {
-                setTimeout(() => {
-                    useFallbackRendering();
-                }, 1000);
+                setTimeout(() => { useOfflineFallback(); }, 1200);
                 return;
             }
 
             try {
-                // Step 1: Text Generation (Gemini)
-                loaderStatus.innerText = "Invocando a Gemini...";
-                loaderSubstatus.innerText = "Buscando un versículo de " + currentTopic;
-                loaderIcon.className = "fa-solid fa-brain text-xl animate-pulse";
-                generatedVerse = await fetchVerseFromGemini();
+                loaderStatus.innerText = "Consultando las Escrituras...";
+                loaderSubstatus.innerText = "Generando prosa teológica pastoral";
+                generatedData = await fetchDevocionalFromGemini();
 
-                // Step 2: Image Generation (Imagen 4.0)
-                loaderStatus.innerText = "Invocando a Imagen 4.0...";
-                loaderSubstatus.innerText = "Pintando un fondo cauto y abstracto";
-                loaderIcon.className = "fa-solid fa-palette text-xl animate-bounce";
+                loaderStatus.innerText = "Preparando el lienzo sacro...";
+                loaderSubstatus.innerText = "Modelando atmósfera ámbar y negra";
                 const base64Image = await fetchImageFromImagen();
 
-                // Step 3: Draw everything on Canvas
-                loaderStatus.innerText = "Componiendo el lienzo...";
-                loaderSubstatus.innerText = "Aplicando tipografía y maquetación";
-                loaderIcon.className = "fa-solid fa-compass-drafting text-xl animate-spin";
-                
                 backgroundImage = new Image();
                 backgroundImage.src = base64Image;
                 backgroundImage.onload = () => {
-                    renderStoryCanvas();
-                    loader.classList.add('hidden');
-                    canvas.classList.remove('hidden');
-                    
-                    // Enable download
-                    btnDownload.disabled = false;
-                    btnDownload.className = "flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-gold-primary text-darkbg hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-500/10";
+                    renderDevocionalCanvas();
+                    finalizeUI();
                 };
 
             } catch (err) {
-                console.warn("Fallo o ausencia de API Key. Iniciando generador offline de alta calidad...", err);
-                useFallbackRendering();
-            } finally {
-                btnGenerate.disabled = false;
-                btnGenerate.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Generar Diseño Completo`;
+                console.warn("Llamadas API fallidas. Cambiando a motor procedural de respaldo de alta fidelidad.", err);
+                useOfflineFallback();
             }
         }
 
-        // Advanced Wrap Text function for canvas
-        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        function finalizeUI() {
+            loader.classList.add('hidden');
+            canvas.classList.remove('hidden');
+            btnGenerate.disabled = false;
+            btnGenerate.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Generar Devocional Premium`;
+            
+            btnDownload.disabled = false;
+            btnDownload.className = "flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-gold-primary text-darkbg hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg";
+        }
+
+        // Algoritmo de envoltura inteligente para Canvas
+        function wrapText(context, text, maxWidth) {
             const words = text.split(' ');
             let line = '';
             const lines = [];
-
             for (let n = 0; n < words.length; n++) {
                 let testLine = line + words[n] + ' ';
                 let metrics = context.measureText(testLine);
-                let testWidth = metrics.width;
-                if (testWidth > maxWidth && n > 0) {
-                    lines.push(line);
+                if (metrics.width > maxWidth && n > 0) {
+                    lines.push(line.trim());
                     line = words[n] + ' ';
                 } else {
                     line = testLine;
                 }
             }
-            lines.push(line);
+            lines.push(line.trim());
             return lines;
         }
 
-        function renderStoryCanvas() {
-            if (!backgroundImage) return;
-
-            // 1. Draw Background
+        function renderDevocionalCanvas() {
+            // 1. Dibujar el fondo base
             ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
-            // 2. Add subtle dark gradient overlay for readability
-            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, 'rgba(0,0,0,0.5)');
-            gradient.addColorStop(0.5, 'rgba(0,0,0,0.2)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0.7)');
-            ctx.fillStyle = gradient;
+            // 2. Capa cinematográfica oscura mate para perfecta legibilidad
+            const overlay = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            overlay.addColorStop(0, 'rgba(5, 5, 6, 0.75)');
+            overlay.addColorStop(0.3, 'rgba(7, 8, 9, 0.45)');
+            overlay.addColorStop(0.7, 'rgba(7, 8, 9, 0.65)');
+            overlay.addColorStop(1, 'rgba(4, 4, 5, 0.88)');
+            ctx.fillStyle = overlay;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // 3. Setup text configuration based on style selected
+            // 3. Detalle de Lujo: Borde fino refinado alrededor de toda la imagen
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.roundRect(30, 30, canvas.width - 60, canvas.height - 60, 40);
+            ctx.stroke();
+
+            // Configuración Global de Textos
             ctx.textAlign = 'center';
-            ctx.fillStyle = currentTextColor;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+            ctx.shadowBlur = 15;
 
-            // Drop shadow for legibility
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-            ctx.shadowBlur = 20;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 4;
+            // ----------------------------------------------------
+            // SECCIÓN SUPERIOR: Encabezado
+            // ----------------------------------------------------
+            ctx.font = '600 28px "Plus Jakarta Sans"';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+            ctx.letterSpacing = "6px";
+            ctx.fillText('VERSÍCULO DEL DÍA', canvas.width / 2, 160);
+            ctx.letterSpacing = "0px";
 
-            // Draw header "VERSÍCULO DEL DÍA"
-            ctx.font = 'bold 36px "Plus Jakarta Sans"';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.fillText('VERSÍCULO DEL DÍA', canvas.width / 2, 280);
-
-            // 4. Wrap & Draw main Verse body
-            let mainFont = 'normal 64px "Playfair Display"';
-            let lineHeight = 85;
-            let padding = 120;
-            let maxTextWidth = canvas.width - (padding * 2);
-
-            if (currentFontStyle === 'sans') {
-                mainFont = '500 52px "Plus Jakarta Sans"';
-                lineHeight = 78;
-            } else if (currentFontStyle === 'cursive') {
-                mainFont = 'normal 110px "Alex Brush"';
-                lineHeight = 110;
-            }
-
-            ctx.font = mainFont;
-            ctx.fillStyle = currentTextColor;
-
-            const wrappedLines = wrapText(ctx, `“${generatedVerse.verse}”`, canvas.width / 2, 0, maxTextWidth, lineHeight);
-            const totalTextHeight = wrappedLines.length * lineHeight;
-            
-            // Calculate vertically centered start position
-            let startY = (canvas.height / 2) - (totalTextHeight / 2) + 40;
-
-            wrappedLines.forEach((line, index) => {
-                ctx.fillText(line.trim(), canvas.width / 2, startY + (index * lineHeight));
-            });
-
-            // 5. Draw Citation
-            let citationY = startY + totalTextHeight + 60;
-            ctx.font = 'bold 38px "Plus Jakarta Sans"';
-            ctx.fillStyle = 'rgba(212, 175, 55, 0.9)';
-            ctx.fillText(generatedVerse.citation.toUpperCase(), canvas.width / 2, citationY);
-
-            // Reset shadows for details
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-
-            // 6. Draw subtle watermark footer
-            ctx.font = 'normal 28px "Plus Jakarta Sans"';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-            ctx.fillText('creado por @fa_of', canvas.width / 2, canvas.height - 150);
-
-            // Subtle divider line at the bottom
-            ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+            // Separador superior sutil debajo del título
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.15)';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo((canvas.width / 2) - 100, canvas.height - 200);
-            ctx.lineTo((canvas.width / 2) + 100, canvas.height - 200);
+            ctx.moveTo((canvas.width / 2) - 60, 200);
+            ctx.lineTo((canvas.width / 2) + 60, 200);
             ctx.stroke();
+
+            // ----------------------------------------------------
+            // SECCIÓN CENTRAL: Gran Versículo Bíblico (Serif)
+            // ----------------------------------------------------
+            ctx.font = 'italic 52px "Playfair Display"';
+            ctx.fillStyle = '#fcfaf2';
+            let maxTextWidth = canvas.width - 240; 
+            
+            let verseLines = wrapText(ctx, `“${generatedData.verse}”`, maxTextWidth);
+            let verseLineHeight = 72;
+            let verseStartY = 500 - ((verseLines.length * verseLineHeight) / 2);
+            
+            verseLines.forEach((line, index) => {
+                ctx.fillText(line, canvas.width / 2, verseStartY + (index * verseLineHeight));
+            });
+
+            // ----------------------------------------------------
+            // SUB-CENTRO: Referencia Bíblica (Sans, Dorada)
+            // ----------------------------------------------------
+            let citationY = verseStartY + (verseLines.length * verseLineHeight) + 40;
+            ctx.font = 'bold 30px "Plus Jakarta Sans"';
+            ctx.fillStyle = '#d4af37';
+            ctx.letterSpacing = "2px";
+            ctx.fillText(generatedData.citation.toUpperCase(), canvas.width / 2, citationY);
+            ctx.letterSpacing = "0px";
+
+            // Gran separador central de sección
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+            ctx.beginPath();
+            ctx.moveTo((canvas.width / 2) - 180, citationY + 65);
+            ctx.lineTo((canvas.width / 2) + 180, citationY + 65);
+            ctx.stroke();
+
+            // ----------------------------------------------------
+            // SECCIÓN INFERIOR: Reflexión Estilo Puritano (Sans Líquida)
+            // ----------------------------------------------------
+            ctx.font = '400 34px "Plus Jakarta Sans"';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.82)';
+            let reflectionLineHeight = 54;
+            let reflectionLines = wrapText(ctx, generatedData.reflection, canvas.width - 200);
+            let reflectionStartY = 1140 - ((reflectionLines.length * reflectionLineHeight) / 2);
+
+            reflectionLines.forEach((line, index) => {
+                ctx.fillText(line, canvas.width / 2, reflectionStartY + (index * reflectionLineHeight));
+            });
+
+            // ----------------------------------------------------
+            // SECCIÓN PIE: Frase Final Memorable (Ajuste Dinámico)
+            // ----------------------------------------------------
+            let finalPhraseStartY = reflectionStartY + (reflectionLines.length * reflectionLineHeight) + 70;
+            ctx.font = 'italic bold 38px "Playfair Display"';
+            ctx.fillStyle = '#f5eecf';
+            
+            let finalPhraseLines = wrapText(ctx, generatedData.finalPhrase, canvas.width - 220);
+            let finalPhraseLineHeight = 54;
+            
+            finalPhraseLines.forEach((line, index) => {
+                ctx.fillText(line, canvas.width / 2, finalPhraseStartY + (index * finalPhraseLineHeight));
+            });
+
+            // ----------------------------------------------------
+            // MARCA DE AGUA EXCLUSIVA: @fa_of
+            // ----------------------------------------------------
+            ctx.shadowColor = 'transparent';
+            ctx.font = '500 26px "Plus Jakarta Sans"';
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.35)';
+            ctx.letterSpacing = "3px";
+            ctx.fillText('CREADO POR @FA_OF', canvas.width / 2, canvas.height - 110);
         }
 
-        function useFallbackRendering() {
-            // Generate fallback verse locally
-            const fallbacks = {
-                esperanza: [
-                    { verse: "Porque yo sé los pensamientos que tengo acerca de vosotros, dice el Señor, pensamientos de paz, y no de mal.", citation: "Jeremías 29:11" },
-                    { verse: "El Señor es mi luz y mi salvación; ¿de quién temeré? El Señor es la fortaleza de mi vida.", citation: "Salmos 27:1" }
-                ],
-                paz: [
-                    { verse: "La paz os dejo, mi paz os doy; yo no os la doy como el mundo la da. No se turbe vuestro corazón.", citation: "Juan 14:27" },
-                    { verse: "Y la paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones.", citation: "Filipenses 4:7" }
-                ],
-                fortaleza: [
-                    { verse: "Todo lo puedo en Cristo que me fortalece.", citation: "Filipenses 4:13" },
-                    { verse: "No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo.", citation: "Isaías 41:10" }
-                ],
-                gratitud: [
-                    { verse: "Dad gracias en todo, porque esta es la voluntad de Dios para con vosotros en Cristo Jesús.", citation: "1 Tesalonicenses 5:18" },
-                    { verse: "Alabad al Señor, porque él es bueno; porque para siempre es su misericordia.", citation: "Salmos 136:1" }
-                ]
-            };
+        function useOfflineFallback() {
+            const fallbacks = [
+                {
+                    verse: "Por tanto, el Señor mismo os dará señal: La virgen concebirá y dará a luz un hijo, y lo llamará Emanuel.",
+                    citation: "Isaías 7:14 (NVI)",
+                    reflection: "Emanuel, Dios con nosotros. Qué misterio tan insondable y glorioso para el atribulado peregrino. No es un monarca distante observando el frío invierno desde su palacio, sino el Rey eterno caminando a nuestro lado en medio del lodo y la aflicción diaria. Confía en Su cercanía.",
+                    finalPhrase: "Si Dios camina a tu lado, la noche más oscura se vuelve mediodía."
+                },
+                {
+                    verse: "Confía en el Señor con todo tu corazón, y no te apoyes en tu propia prudencia.",
+                    citation: "Proverbios 3:5 (NVI)",
+                    reflection: "Nuestra razón es un faro que a menudo se quiebra ante la densa niebla del porvenir. Qué sabio es rendir el timón a la infalible providencia del Altísimo. El camino trazado por Su soberana voluntad avanza en línea recta, aun cuando tus ojos solo perciban curvas peligrosas. Entrégate a Su dirección.",
+                    finalPhrase: "Cerrar los ojos a la lógica humana es abrirlos por completo a la provisión divina."
+                }
+            ];
 
-            const chosenList = fallbacks[currentTopic] || fallbacks.esperanza;
-            generatedVerse = chosenList[Math.floor(Math.random() * chosenList.length)];
+            generatedData = fallbacks[Math.floor(Math.random() * fallbacks.length)];
 
-            // Create canvas procedural background (Luxury dark gold abstract mesh)
-            const gradientBg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 100, canvas.width/2, canvas.height/2, canvas.height);
-            gradientBg.addColorStop(0, '#1c1811'); // Warm gold undertone dark
-            gradientBg.addColorStop(0.5, '#0E1012'); // Dark charcoal
-            gradientBg.addColorStop(1, '#050607'); // True black
-            
-            // Build temporary Image to fit standard logic
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = canvas.width;
             tempCanvas.height = canvas.height;
             const tempCtx = tempCanvas.getContext('2d');
-            tempCtx.fillStyle = gradientBg;
-            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-            
-            // Draw some abstract cauto vector circles for art
-            tempCtx.fillStyle = 'rgba(212, 175, 55, 0.03)';
-            tempCtx.beginPath();
-            tempCtx.arc(canvas.width * 0.8, canvas.height * 0.2, 500, 0, Math.PI * 2);
-            tempCtx.fill();
-            
-            tempCtx.beginPath();
-            tempCtx.arc(canvas.width * 0.1, canvas.height * 0.8, 400, 0, Math.PI * 2);
-            tempCtx.fill();
+
+            tempCtx.fillStyle = '#060607';
+            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+            let radGrad1 = tempCtx.createRadialGradient(canvas.width * 0.8, canvas.height * 0.2, 50, canvas.width * 0.8, canvas.height * 0.2, 600);
+            radGrad1.addColorStop(0, 'rgba(184, 129, 36, 0.08)');
+            radGrad1.addColorStop(1, 'rgba(0,0,0,0)');
+            tempCtx.fillStyle = radGrad1;
+            tempCtx.beginPath(); tempCtx.arc(canvas.width * 0.8, canvas.height * 0.2, 600, 0, Math.PI*2); tempCtx.fill();
 
             backgroundImage = new Image();
-            backgroundImage.src = tempCanvas.toDataURL();
+            backgroundImage.src = tempCanvas.toDataURL('image/jpeg');
             backgroundImage.onload = () => {
-                renderStoryCanvas();
-                loader.classList.add('hidden');
-                canvas.classList.remove('hidden');
-                btnDownload.disabled = false;
-                btnDownload.className = "flex-1 py-3 px-6 rounded-xl font-bold text-xs bg-gold-primary text-darkbg hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-500/10";
+                renderDevocionalCanvas();
+                finalizeUI();
             };
         }
 
-        // Trigger safe client-side download
         function downloadStory() {
-            if (!backgroundImage) return;
-            
             const link = document.createElement('a');
-            link.download = `InstaVerse_${currentTopic}_${Date.now()}.jpg`;
+            link.download = `Devocional_NVI_InstaVerse_${new Date().toISOString().slice(0,10)}.jpg`;
             link.href = canvas.toDataURL('image/jpeg', 0.95);
             link.click();
         }
